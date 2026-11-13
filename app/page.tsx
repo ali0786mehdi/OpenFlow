@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const features = [
   {
     number: "01",
@@ -63,6 +65,7 @@ export default function Home() {
           </p>
           <div className="hero-actions">
             <a className="button button-primary" href="#foundation">Explore the vision <span aria-hidden="true">↓</span></a>
+            <Link className="button button-secondary" href="/dashboard">Open dashboard <span aria-hidden="true">→</span></Link>
             <a className="button button-secondary" href="https://github.com/ali0786mehdi/OpenFlow">Contribute on GitHub <span aria-hidden="true">↗</span></a>
           </div>
           <p className="hero-note">A community-built learning platform in its early stages.</p>
