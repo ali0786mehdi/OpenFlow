@@ -19,6 +19,27 @@ const features = [
   },
 ];
 
+const architecture = [
+  {
+    label: "Frontend",
+    items: ["Next.js", "TypeScript", "Tailwind-ready UI"],
+  },
+  {
+    label: "Platform",
+    items: ["API services", "Auth", "Users & progress"],
+  },
+  {
+    label: "Data",
+    items: ["PostgreSQL", "Prisma", "Redis caching"],
+  },
+  {
+    label: "Learning Engine",
+    items: ["Algorithms", "Visualizer", "Progress tracking"],
+  },
+];
+
+const designTokens = ["#0C0F12", "#A7F36B", "#F0F3F2", "#9AA5A5", "#1B2428"];
+
 export default function Home() {
   return (
     <main>
@@ -41,7 +62,7 @@ export default function Home() {
             Follow an algorithm, try it yourself, and grow your skills at your own pace.
           </p>
           <div className="hero-actions">
-            <a className="button button-primary" href="#features">Explore the vision <span aria-hidden="true">↓</span></a>
+            <a className="button button-primary" href="#foundation">Explore the vision <span aria-hidden="true">↓</span></a>
             <a className="button button-secondary" href="https://github.com/ali0786mehdi/OpenFlow">Contribute on GitHub <span aria-hidden="true">↗</span></a>
           </div>
           <p className="hero-note">A community-built learning platform in its early stages.</p>
@@ -69,6 +90,40 @@ export default function Home() {
               <p>{feature.description}</p>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section className="foundation" id="foundation" aria-labelledby="foundation-title">
+        <div className="section-heading foundation-heading">
+          <p className="eyebrow">Foundation phase</p>
+          <h2 id="foundation-title">Architecture and design system</h2>
+        </div>
+
+        <div className="foundation-grid">
+          {architecture.map((block) => (
+            <article className="architecture-card" key={block.label}>
+              <div className="architecture-header">
+                <span className="architecture-pill">{block.label}</span>
+              </div>
+              <ul>
+                {block.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+
+        <div className="design-panel">
+          <div>
+            <p className="eyebrow">Design tokens</p>
+            <h3>Simple, readable, high-contrast UI</h3>
+          </div>
+          <div className="token-row" aria-label="OpenFlow design color tokens">
+            {designTokens.map((color) => (
+              <span key={color} className="token-swatch" style={{ background: color }} aria-label={color} title={color} />
+            ))}
+          </div>
         </div>
       </section>
 
