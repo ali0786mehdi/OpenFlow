@@ -29,17 +29,17 @@ export default function DashboardPage() {
   return (
     <div className="dashboard-shell">
       <aside className="sidebar">
-        <div className="sidebar-brand">
-          <span className="brand-mark">O</span>
+        <Link className="sidebar-brand" href="/">
+          <span className="brand-mark" aria-hidden="true">O</span>
           <span>OpenFlow</span>
-        </div>
+        </Link>
 
         <nav className="sidebar-nav" aria-label="Dashboard navigation">
-          <a className="nav-item active" href="#">Overview</a>
-          <a className="nav-item" href="#">Learning paths</a>
-          <a className="nav-item" href="#">Visualizers</a>
-          <a className="nav-item" href="#">Practice</a>
-          <a className="nav-item" href="#">Analytics</a>
+          <Link className="nav-item active" href="/dashboard" aria-current="page">Overview</Link>
+          <a className="nav-item" href="#learning-paths">Learning paths</a>
+          <a className="nav-item" href="#visualizers">Visualizers</a>
+          <a className="nav-item" href="#practice">Practice</a>
+          <a className="nav-item" href="#analytics">Analytics</a>
         </nav>
 
         <div className="sidebar-card">
@@ -55,9 +55,10 @@ export default function DashboardPage() {
             <p className="dashboard-eyebrow">Welcome back</p>
             <h1>Growth dashboard</h1>
           </div>
-          <Link className="button button-primary dashboard-button" href="/">
-            Back to home
-          </Link>
+          <div className="dashboard-actions">
+            <Link className="button button-secondary dashboard-button" href="/login">Sign in</Link>
+            <Link className="button button-primary dashboard-button" href="/profile">Your profile</Link>
+          </div>
         </header>
 
         <section className="stats-grid" aria-label="Learning stats overview">
@@ -69,7 +70,7 @@ export default function DashboardPage() {
           ))}
         </section>
 
-        <section className="content-grid">
+        <section className="content-grid" id="learning-paths">
           <article className="panel panel-wide">
             <div className="panel-header">
               <h2>Current learning path</h2>
@@ -83,7 +84,7 @@ export default function DashboardPage() {
                     <span>{path.name}</span>
                     <strong>{path.progress}%</strong>
                   </div>
-                  <div className="progress-bar" aria-label={`${path.name} progress`}>
+                  <div className="progress-bar" role="progressbar" aria-label={`${path.name} progress`} aria-valuenow={path.progress} aria-valuemin={0} aria-valuemax={100}>
                     <span style={{ width: `${path.progress}%`, background: path.color }} />
                   </div>
                 </div>
@@ -105,7 +106,7 @@ export default function DashboardPage() {
           </article>
         </section>
 
-        <section className="bottom-grid">
+        <section className="bottom-grid" id="analytics">
           <article className="panel">
             <div className="panel-header">
               <h2>Recent activity</h2>
@@ -115,9 +116,7 @@ export default function DashboardPage() {
             <ul className="activity-list">
               {activity.map((item) => (
                 <li key={item.title}>
-                  <div>
-                    <strong>{item.title}</strong>
-                  </div>
+                  <div><strong>{item.title}</strong></div>
                   <span>{item.time}</span>
                 </li>
               ))}
@@ -127,12 +126,8 @@ export default function DashboardPage() {
           <article className="panel panel-highlight">
             <p className="highlight-label">Focus goal</p>
             <h3>Finish the sorting module</h3>
-            <p>
-              Complete the core algorithm walkthrough and compare performance trade-offs.
-            </p>
-            <Link className="button button-primary" href="/">
-              Resume learning
-            </Link>
+            <p>Complete the core algorithm walkthrough and compare performance trade-offs.</p>
+            <Link className="button button-primary" href="/">Resume learning</Link>
           </article>
         </section>
       </main>
